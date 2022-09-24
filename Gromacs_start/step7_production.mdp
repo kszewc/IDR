@@ -1,0 +1,46 @@
+integrator              = md
+dt                      = 0.002
+;continuation            = no        ; first dynamics run
+nsteps                  = 500000000
+nstlog                  = 1000
+nstxout                 = 1000
+nstvout                 = 1000
+nstfout                 = 1000
+nstcalcenergy           = 100
+nstenergy               = 1000
+
+;
+cutoff-scheme           = Verlet
+nstlist                 = 20
+rlist                   = 1.2
+coulombtype             = pme
+rcoulomb                = 1.2
+vdwtype                 = Cut-off
+vdw-modifier            = Force-switch
+rvdw_switch             = 1.0
+rvdw                    = 1.2
+;
+tcoupl                  = Nose-Hoover
+tc_grps                 = Protein_ADP_MG   POPC_SAPI2   POT_CLA_SOL
+tau_t                   = 1.0    1.0    1.0
+ref_t                   = 310 310 310
+;
+pcoupl                  = Parrinello-Rahman
+pcoupltype              = semiisotropic 
+tau_p                   = 5.0
+compressibility         = 4.5e-5  4.5e-5
+ref_p                   = 1.0     1.0
+;
+constraints             = h-bonds
+constraint_algorithm    = LINCS
+continuation            = yes
+;
+nstcomm                 = 100
+comm_mode               = linear
+comm_grps               = Protein_ADP_MG   POPC_SAPI2   POT_CLA_SOL
+;
+refcoord_scaling        = com
+; Velocity generation
+;gen_vel                 = yes       ; assign velocities from Maxwell distribution
+;gen_temp                = 300       ; temperature for Maxwell distribution
+;gen_seed                = -1        ; generate a random seed

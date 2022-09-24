@@ -1,0 +1,33 @@
+;
+;	File 'topol_Ion_chain_G.itp' was generated
+;	By user: kszewc (1000)
+;	On host: pbt2
+;	At date: Thu Apr 25 13:38:50 2019
+;
+;	This is a include topology file
+;
+;	Created by:
+;	                    :-) GROMACS - gmx pdb2gmx, 2018.3 (-:
+;	
+;	Executable:   /usr/bin/gmx
+;	Data prefix:  /usr
+;	Working dir:  /home/kszewc/BIG/BIG/gromacs
+;	Command line:
+;	  gmx pdb2gmx -f back_lig2.pdb -o ligands.gro
+;	Force field was read from current directory or a relative path - path added.
+;
+
+[ moleculetype ]
+; Name            nrexcl
+Ion_chain_G         3
+
+[ atoms ]
+;   nr       type  resnr residue  atom   cgnr     charge       mass  typeB    chargeB      massB
+; residue   3 MG  rtp MG   q +2.0
+     1         MG      3     MG     MG      1          2     24.305   ; qtot 2
+
+; Include Position restraint file
+#ifdef POSRES
+#include "posre_Ion_chain_G.itp"
+#endif
+
